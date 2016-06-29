@@ -1,6 +1,6 @@
-angular.module('main', []).component("myApp", {
-    template: "<h1>Hello main component</h1>",
-    controller: function() {
-        
-    }
-});
+angular.module('app', ['ngRoute', 'mainModule'])
+    .config(function ($routeProvider) {
+        $routeProvider.when('/', {
+            template: '<main></main>'
+        });
+    });

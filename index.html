@@ -1,12 +1,20 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        
-    </head>
-    <body ng-app="main">
-        <script src="/bower_components/angular/angular.js"></script>        
-        <script src="/bower_components/angular-component-router/angular_1_router.js"></script>
-        <script src="/bower_components/angular-component-router/ng_route_shim.js"></script>
-        <script src="app/app.js"></script>        
-        <my-app></my-app>
-    </body>
+
+<head>
+    <base href="/">    
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body ng-app="app">
+    <ng-view></ng-view>
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/components/main/mainModule.js"></script>
+</body>
+
 </html>
