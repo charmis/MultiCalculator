@@ -1,7 +1,7 @@
-angular.module('app', ['ngRoute', 'mainModule', 'scientificCalculator', 'standardCalculator'])
+angular.module('app', ['ngRoute', 'mainModule', 'scientificCalculator', 'standardCalculator', 'leftNavigation'])
     .config(function ($routeProvider) {
         $routeProvider.when('/', {
-            template: '<div>asdfasdf</div>'
+            template: '<standardcalculator>Standard</standardcalculator>'
         });
         $routeProvider.when('/standard', {
             template: '<standardcalculator>Standard</standardcalculator>'

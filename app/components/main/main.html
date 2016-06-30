@@ -9,8 +9,12 @@
         <header class="xs-col-12"></header>
     </div>
     <div class="row">
-        <leftnav class="xs-col-3" style="float:left;">Left Navigation Menu</leftnav>
-        <ng-view class="xs-col-9">Main Page</ng-view>
+        <div class="xs-col-3">
+            <leftnavigation></leftnavigation>
+        </div>
+        <div class="xs-col-9">
+            <ng-view></ng-view>
+        </div>
     </div>
     <div class="row">
         <footer class="xs-col-12">Footer</footer>
