@@ -1,12 +1,7 @@
-angular.module("headerModule")
-.component("header", headerComponent);
-
-var headerComponent = {
-  templateUrl: 'headerView.html',
-  controller: HeaderController
-};
-
-function HeaderController()
-{
-
-}
+angular.module("headerModule", [])
+  .component("header", {
+    templateUrl: "/app/components/header/headerView.html",
+    controller: function () {
+      console.log("insider HeaderController");
+    }
+  });
