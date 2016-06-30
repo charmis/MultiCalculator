@@ -1,0 +1,24 @@
+{
+  "name": "MultiCalculator",
+  "authors": [
+    "Charmis Varghese <charmispv@users.noreply.github.com>"
+  ],
+  "description": "Different types of Calculator.",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "1.5.7",
+    "angular": "^1.5.7",
+    "bootstrap": "^3.3.6",
+    "font-awesome": "fontawesome#^4.6.3"
+  }
+}
