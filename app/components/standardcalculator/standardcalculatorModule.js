@@ -1,6 +1,6 @@
 angular.module('standardCalculator',[])
 .component('standardcalculator', {
-    template: '<h1>Standard calculator</h1>',
+    templateUrl: '/app/components/standardcalculator/standardcalculatorview.html',
     controller: function(){
 
     }
