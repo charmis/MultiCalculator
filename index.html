@@ -4,15 +4,23 @@
 <head>
     <base href="/">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="/bower_components/angular-material/angular-material.min.css"></script>
 </head>
 
 <body ng-app="app">
+    <md-toolbar layout="row" >
+      <h1>Angular Material - Starter App</h1>
+    </md-toolbar>
+    <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2"></md-sidenav>
     <main></main>
 
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="/bower_components/angular-material/angular-material.min.js"></script>
 
     <script src="app/components/header/headerModule.js"></script>
     <script src="app/components/main/mainModule.js"></script>
@@ -20,8 +28,8 @@
     <script src="app/components/footer/footerModule.js"></script>
     <script src="app/components/scientificcalculator/scientificcalculatorModule.js"></script>
     <script src="app/components/standardcalculator/standardcalculatorModule.js"></script>
-    <script src="app/components/leftnavigation/leftnavigationModule.js"></script>   
-    
+    <script src="app/components/leftnavigation/leftnavigationModule.js"></script>
+
 </body>
 
 </html>
