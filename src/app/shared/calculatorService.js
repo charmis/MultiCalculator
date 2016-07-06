@@ -28,6 +28,7 @@ function ClearState() {
             this.operand1 += input;
             this.displayText = this.operand1;
             this.currentState = new DigitPressedState();
+            Object.setPrototype(this.c.currentState, calculatorStateBase);
         }
     }
 }
@@ -38,10 +39,12 @@ function DigitPressedState() {
             this.operand1 += input;
             this.displayText = this.operand1;
             this.currentState = new DigitPressedState();
+            Object.setPrototype(this.c.currentState, calculatorStateBase);
         }
         else if (input === '+' || input === '-' || input === '*' || input === '/') {
             this.operator = input;
             this.currentState = new OperatorPressedState();
+            Object.setPrototype(this.c.currentState, calculatorStateBase);
         }
         else if (input === 'C') {
             this.operand1 = '';
@@ -49,6 +52,7 @@ function DigitPressedState() {
             this.operator = '';
             this.displayText = '0.0';
             this.currentState = new ClearState();
+            Object.setPrototype(this.c.currentState, calculatorStateBase);
         }
     }
 }
@@ -59,10 +63,12 @@ function OperatorPressedState() {
             this.operand2 += input;
             this.displayText = this.operand2;
             this.currentState = new DigitsPressedWithPendingOperatorState();
+            Object.setPrototype(this.c.currentState, calculatorStateBase);
         }
         else if (input === '+' || input === '-' || input === '*' || input === '/') {
             this.operator = input;
             this.currentState = new OperatorPressedState();
+            Object.setPrototype(this.c.currentState, calculatorStateBase);
         }
         else if (input === 'C') {
             this.operand1 = '';
@@ -70,6 +76,7 @@ function OperatorPressedState() {
             this.operator = '';
             this.displayText = '0.0';
             this.currentState = new ClearState();
+            Object.setPrototype(this.c.currentState, calculatorStateBase);
         }
     }
 }
@@ -80,6 +87,7 @@ function DigitsPressedWithPendingOperatorState() {
             this.operand2 += input;
             this.displayText = this.operand2;
             this.currentState = new DigitsPressedWithPendingOperatorState();
+            Object.setPrototype(this.c.currentState, calculatorStateBase);
         }
         else if (input === '+' || input === '-' || input === '*' || input === '/') {
             var op1 = parseInt(this.operand1);
@@ -101,6 +109,7 @@ function DigitsPressedWithPendingOperatorState() {
             this.displayText = this.operand1;
             this.operator = input;
             this.currentState = new OperatorPressedState();
+            Object.setPrototype(this.c.currentState, calculatorStateBase);
         }
         else if (input === '=') {
             var op1 = parseInt(this.operand1);
@@ -122,6 +131,7 @@ function DigitsPressedWithPendingOperatorState() {
             this.result = result;
             this.displayText = result;
             this.currentState = new CalculateState();
+            Object.setPrototype(this.c.currentState, calculatorStateBase);
         }
         else if (input === 'C') {
             this.operand1 = '';
@@ -129,6 +139,7 @@ function DigitsPressedWithPendingOperatorState() {
             this.operator = '';
             this.displayText = '0.0';
             this.currentState = new ClearState();
+            Object.setPrototype(this.c.currentState, calculatorStateBase);
         }
     }
 }
@@ -142,6 +153,7 @@ function CalculateState() {
             this.result = 0;
             this.displayText = '0.0';
             this.currentState = new ClearState();
+            Object.setPrototype(this.c.currentState, calculatorStateBase);
         }
         else if (input === '1' || input === '2') {
             this.operand1 = '';
@@ -150,11 +162,13 @@ function CalculateState() {
             this.result = 0;
             this.displayText = '0.0';
             this.currentState = new DigitPressedState();
+            Object.setPrototype(this.c.currentState, calculatorStateBase);
         }
         else if (input === '+' || input === '-' || input === '*' || input === '/') {
             this.operand1 = this.result;
             this.operator = input;
             this.currentState = new DigitsPressedWithPendingOperatorState();
+            Object.setPrototype(this.c.currentState, calculatorStateBase);
         }
     }
 }
