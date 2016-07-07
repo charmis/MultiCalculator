@@ -1,7 +1,7 @@
 {
   "name": "MultiCalculator",
   "authors": [
-    "Charmis Varghese <charmispv@users.noreply.github.com>"
+    "Charmis Varghese <charmis@users.noreply.github.com>"
   ],
   "description": "Different types of Calculator.",
   "main": "index.html",
@@ -19,6 +19,7 @@
     "angular-route": "1.5.7",
     "angular": "^1.5.7",
     "bootstrap": "^3.3.6",
-    "font-awesome": "fontawesome#^4.6.3"
+    "font-awesome": "fontawesome#^4.6.3",
+    "angular-mocks": "^1.5.7"
   }
 }

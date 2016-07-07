@@ -1,36 +1,29 @@
-describe('calculator', function () {
+describe('Testing Calculator Service', function () {
+	beforeEach(module('calculatorEngine'));
 
-  beforeEach(module('standardcalculatorModule'));
-	var element;
-  var scope;
+	var calculatorService;
 
-  beforeEach(inject(function ($rootScope, $compile) {
-    scope = $rootScope.$new();
-    element = angular.element('<standardcalculator></standardcalculator>');
-    element = $compile(element)(scope);
-    scope.outside = '1.5';
-    scope.$apply();
-  }));
+	beforeEach(inject(function (calculatorEngineService) {
+		calculatorService = calculatorEngineService;
+	}));
 
-	var controller;
-	beforeEach(function () {
-		controller = element.controller('myComponent');
+	it('1 + 1 should be equal to 2', function () {
+		calculatorService.start();
+		calculatorService.processInput('1');
+		calculatorService.processInput('+');
+		calculatorService.processInput('1');
+		var result = calculatorService.processInput('=');
+		expect(result).toBe(2);
 	});
 
-	it('should expose my title', function () {
-		expect(controller.myTitle).toBeDefined();
-		expect(controller.myTitle).toBe('Unit Testing AngularJS');
-	});
 
-  describe('sum', function () {
-		it('1 + 1 should equal 2', function () {
-			var $scope = {};
-			var controller = $controller('CalculatorController', { $scope: $scope });
-			$scope.x = 1;
-			$scope.y = 2;
-			$scope.sum();
-			expect($scope.z).toBe(3);
-		});
+it('2 * 2 should be equal to 4', function () {
+		calculatorService.start();
+		calculatorService.processInput('2');
+		calculatorService.processInput('*');
+		calculatorService.processInput('2');
+		var result = calculatorService.processInput('=');
+		expect(result).toBe(4);
 	});
 
 });

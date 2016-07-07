@@ -10,6 +10,17 @@ var calculatorEngine = function () {
     var displayText = '';
     var currentState;
 
+    function start()
+    {
+        operand1 = '';
+        operand2 = '';
+        result = 0;
+        displayText = '';
+        currentState = getClearState();
+        
+        return displayText;
+    }
+
     function getClearState() {
         return {
             processInput: function (input) {
@@ -153,10 +164,7 @@ var calculatorEngine = function () {
     }
 
     return {
-        start: function () {
-            currentState = getClearState();
-            return displayText;
-        },
+        start: start,
         processInput: function (input) {
             return currentState.processInput(input);
         },
