@@ -7,41 +7,41 @@
 </style>
 <table class="col-xs-8">
     <tr>
-        <td colspan="4"><input type="text" ng-model="$ctrl.result" style="width:100%; background-color:#FFF" disabled placeholder="0" class="text-right input-lg"></td>
+        <td colspan="4"><input type="text" ng-model="$ctrl.displayText" style="width:100%; background-color:#FFF" disabled placeholder="0" class="text-right input-lg"></td>
     </tr>
     <tr>        
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.addToMemory();"><h4>M+</h4></button></td>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.subtractFromMemory();"><h4>M-</h4></button></td>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.showValueInMemory();"><h4>MR</h4></button></td>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.clearMemory();"><h4>MC</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('M+');"><h4>M+</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('M-');"><h4>M-</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('MR');"><h4>MR</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('MC');"><h4>MC</h4></button></td>
     </tr>
     <tr>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.plusClick();"><h4>+</h4></button></td>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.minusClick();"><h4>-</h4></button></td>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.input();"><h4>*</h4></button></td>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.input();"><h4>/</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('+');"><h4>+</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('-');"><h4>-</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('*');"><h4>*</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('/');"><h4>/</h4></button></td>
     </tr>
     <tr>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.input('1');"><h4>1</h4></button></td>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.input('2');"><h4>2</h4></button></td>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.input('3');"><h4>3</h4></button></td>
-        <td rowspan="2"><button type="button" class="btn btn-primary" style="height:100%;padding:0px;" ng-click="$ctrl.calculate();"><h4>=</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('1');"><h4>1</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('2');"><h4>2</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('3');"><h4>3</h4></button></td>
+        <td rowspan="2"><button type="button" class="btn btn-primary" style="height:100%;padding:0px;" ng-click="$ctrl.buttonClick('=');"><h4>=</h4></button></td>
     </tr>
     <tr>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.input('4');"><h4>4</h4></button></td>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.input('5');"><h4>5</h4></button></td>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.input('6');"><h4>6</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('4');"><h4>4</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('5');"><h4>5</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('6');"><h4>6</h4></button></td>
     </tr>
     <tr>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.input('7');"><h4>7</h4></button></td>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.input('8');"><h4>8</h4></button></td>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.input('9');"><h4>9</h4></button></td>
-        <td rowspan="2"><button type="button" class="btn btn-danger" style="height:100%;padding:0px;" ng-click="$ctrl.clear();"><h4>C</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('7');"><h4>7</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('8');"><h4>8</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('9');"><h4>9</h4></button></td>
+        <td rowspan="2"><button type="button" class="btn btn-danger" style="height:100%;padding:0px;" ng-click="$ctrl.buttonClick('C');"><h4>C</h4></button></td>
     </tr>
     <tr>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.input('0');"><h4>0</h4></button></td>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.input('.');"><h4>.</h4></button></td>
-        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.input('+-');"><h4>+ -</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('0');"><h4>0</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('.');"><h4>.</h4></button></td>
+        <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('+-');"><h4>+ -</h4></button></td>
     </tr>
 </table>
 <div class="col-xs-4"></div>

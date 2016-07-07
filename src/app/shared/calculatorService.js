@@ -1,6 +1,6 @@
 angular.module('calculatorEngine', [])
     .factory('calculatorEngineService', function () {
-        return new CalculatorEngine();
+        return calculatorEngine;
     });
 
 var calculatorEngine = function () {
@@ -13,6 +13,7 @@ var calculatorEngine = function () {
     function getClearState() {
         return {
             processInput: function (input) {
+                //TODO: bitwise mask
                 if (input === '1' || input === '2' || input === '3' || input === '4') {
                     operand1 += input;
                     displayText = operand1;
@@ -79,7 +80,7 @@ var calculatorEngine = function () {
                 } else if (input === '+' || input === '-' || input === '*' || input === '/') {
                     var op1 = parseInt(operand1);
                     var op2 = parseInt(operand2);
-                    
+
                     if (operator === '+') {
                         result = op1 + op2;
                     } else if (operator === '-') {
@@ -93,11 +94,11 @@ var calculatorEngine = function () {
                     displayText = operand1;
                     operator = input;
                     currentState = getOperatorPressedState();
-                } else if (input === '=') {                    
+                } else if (input === '=') {
 
                     var op1 = parseInt(operand1);
                     var op2 = parseInt(operand2);
-                    
+
                     if (operator === '+') {
                         result = op1 + op2;
                     } else if (operator === '-') {
@@ -154,27 +155,31 @@ var calculatorEngine = function () {
     return {
         start: function () {
             currentState = getClearState();
+            return displayText;
         },
         processInput: function (input) {
-            currentState.processInput(input);
+            return currentState.processInput(input);
         },
-        printOperand1: function () {
-            console.log(operand1);
-        },
-        printOperand2: function () {
-            console.log(operand2);
-        },
-        printResult: function () {
-            console.log(displayText);
+        debug: {
+            printOperand1: function () {
+                console.log(operand1);
+            },
+            printOperand2: function () {
+                console.log(operand2);
+            },
+            printResult: function () {
+                console.log(displayText);
+            }
         }
     }
 } ();
 
-calculatorEngine.start();
+/*calculatorEngine.start();
 calculatorEngine.processInput('3');
-calculatorEngine.printOperand1();
+calculatorEngine.debug.printOperand1();
 calculatorEngine.processInput('+');
 calculatorEngine.processInput('1');
-calculatorEngine.printOperand2();
+calculatorEngine.debug.printOperand2();
 var sum = calculatorEngine.processInput('=');
 console.log(sum);
+*/
