@@ -5,6 +5,8 @@
   "main": "index.html",
   "dependencies": {},
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-print": "^2.0.1",
     "jasmine-core": "^2.4.1",
     "karma": "^1.1.0",
     "karma-chrome-launcher": "^1.0.1",
