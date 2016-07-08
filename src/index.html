@@ -8,18 +8,21 @@
             padding: 1px;
         }
     </style>
+    <!-- inject:css -->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- endinject -->
 </head>
 
 <body ng-app="app">
     <main></main>
-
+    <!-- inject:js -->
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-route/angular-route.min.js"></script>
-
+    <!-- endinject -->
+    <!-- build:js js/main.min.js -->
     <script src="app/components/header/headerModule.js"></script>
     <script src="app/components/main/mainModule.js"></script>
     <script src="app/app.js"></script>
@@ -28,7 +31,7 @@
     <script src="app/components/standardcalculator/standardcalculatorModule.js"></script>
     <script src="app/components/leftnavigation/leftnavigationModule.js"></script>
     <script src="app/shared/calculatorService.js"></script>
-
+    <!-- endbuild -->
 </body>
 
 </html>
