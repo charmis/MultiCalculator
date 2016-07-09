@@ -39,7 +39,7 @@ var calculatorEngine = function () {
     function getDigitPressedState() {
         return {
             processInput: function (input) {
-                if (input === '1' || input === '2' || input === '3' || input === '4' || input === '5' || input === '6' || input === '7' || input === '8' || input === '9') {
+                if (input === '0' || input === '1' || input === '2' || input === '3' || input === '4' || input === '5' || input === '6' || input === '7' || input === '8' || input === '9') {
                     operand1 += input;
                     displayText = operand1;
                 } else if (input === '+' || input === '-' || input === '*' || input === '/') {
@@ -49,7 +49,7 @@ var calculatorEngine = function () {
                     operand1 = '';
                     operand2 = '';
                     operator = '';
-                    displayText = '0.0';
+                    displayText = '0';
                     currentState = getClearState();
                 }
 

@@ -1,5 +1,5 @@
-call npm install 
-IF "%ERRORLEVEL%" NEQ "0" goto error
+rem call npm install 
+rem IF "%ERRORLEVEL%" NEQ "0" goto error
 
 call gulp
 IF "%ERRORLEVEL%" NEQ "0" goto error
