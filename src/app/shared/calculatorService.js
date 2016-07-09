@@ -25,7 +25,7 @@ var calculatorEngine = function () {
         return {
             processInput: function (input) {
                 //TODO: bitwise mask
-                if (input === '1' || input === '2' || input === '3' || input === '4') {
+                if (input === '1' || input === '2' || input === '3' || input === '4' || input === '5' || input === '6' || input === '7' || input === '8' || input === '9') {
                     operand1 += input;
                     displayText = operand1;
                     currentState = getDigitPressedState();
@@ -39,7 +39,7 @@ var calculatorEngine = function () {
     function getDigitPressedState() {
         return {
             processInput: function (input) {
-                if (input === '1' || input === '2' || input === '3' || input === '4') {
+                if (input === '1' || input === '2' || input === '3' || input === '4' || input === '5' || input === '6' || input === '7' || input === '8' || input === '9') {
                     operand1 += input;
                     displayText = operand1;
                 } else if (input === '+' || input === '-' || input === '*' || input === '/') {
@@ -61,7 +61,7 @@ var calculatorEngine = function () {
     function getOperatorPressedState() {
         return {
             processInput: function (input) {
-                if (input === '0' || input === '1' || input === '2' || input === '3' || input === '4') {
+                if (input === '0' || input === '1' || input === '2' || input === '3' || input === '4' || input === '5' || input === '6' || input === '7' || input === '8' || input === '9') {
                     operand2 += input;
                     displayText = operand2;
                     currentState = getDigitsPressedWithPendingOperatorState();
@@ -72,7 +72,7 @@ var calculatorEngine = function () {
                     operand1 = '';
                     operand2 = '';
                     operator = '';
-                    displayText = '0.0';
+                    displayText = '0';
                     currentState = getClearState();
                 }
 
@@ -84,7 +84,7 @@ var calculatorEngine = function () {
     function getDigitsPressedWithPendingOperatorState() {
         return {
             processInput: function (input) {
-                if (input === '0' || input === '1' || input === '2' || input === '3' || input === '4') {
+                if (input === '0' || input === '1' || input === '2' || input === '3' || input === '4' || input === '5' || input === '6' || input === '7' || input === '8' || input === '9') {
                     operand2 += input;
                     displayText = operand2;
                     currentState = getDigitsPressedWithPendingOperatorState();
@@ -126,7 +126,7 @@ var calculatorEngine = function () {
                     operand1 = '';
                     operand2 = '';
                     operator = '';
-                    displayText = '0.0';
+                    displayText = '0';
                     currentState = getClearState();
                 }
 
@@ -143,14 +143,14 @@ var calculatorEngine = function () {
                     operand2 = '';
                     operator = '';
                     result = 0;
-                    displayText = '0.0';
+                    displayText = '0';
                     currentState = getClearState();
-                } else if (input === '1' || input === '2') {
+                } else if (input === '1' || input === '2' || input === '3' || input === '4' || input === '5' || input === '6' || input === '7' || input === '8' || input === '9') {
                     operand1 = '';
                     operand2 = '';
                     operator = '';
                     result = 0;
-                    displayText = '0.0';
+                    displayText = '0';
                     currentState = getDigitPressedState();
                 } else if (input === '+' || input === '-' || input === '*' || input === '/') {
                     operand1 = result;
