@@ -12,13 +12,13 @@ gulp.task('copy_components', function () {
 });
 
 gulp.task('copy_bower_components', ['copy_components'], function () {
-    gulp.src(['bower_components/**/*.min.js', 'bower_components/**/*.min.css'])
+    gulp.src(['bower_components/**/*.min.js', 'bower_components/**/*.min.css', 'bower_components/**/*.woff'])
+    .pipe(gulpDebug())
         .pipe(gulp.dest('dist/bower_components'));
 });
 
 gulp.task('useref', ['copy_bower_components'], function () {
-    return gulp.src('index.html')
-        .pipe(gulpDebug())
+    return gulp.src('index.html')        
         .pipe(useref())
         //.pipe(gulpIf('*.js', uglify()))
         .pipe(gulp.dest('dist'))
