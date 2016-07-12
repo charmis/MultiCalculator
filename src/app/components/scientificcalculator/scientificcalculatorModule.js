@@ -1,6 +1,6 @@
 angular.module('scientificCalculator',[])
 .component('scientificcalculator', {
-    template:"<h1>Scientific Calculator</h1>",
+    templateUrl: '/app/components/scientificcalculator/scientificcalculatorView.html',
     controller: function(){
 
     }
