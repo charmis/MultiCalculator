@@ -7,15 +7,20 @@ var calculatorEngine = function () {
     var operand1 = '';
     var operand2 = '';
     var result = 0;
-    var displayText = '';
+    var displayText = '0';
     var currentState;
 
-    function start()
+    function reset()
     {
         operand1 = '';
         operand2 = '';
         result = 0;
-        displayText = '';
+        displayText = '0';        
+    }
+
+    function start()
+    {
+        reset();
         currentState = getClearState();
         
         return displayText;
@@ -46,10 +51,7 @@ var calculatorEngine = function () {
                     operator = input;
                     currentState = getOperatorPressedState();
                 } else if (input === 'C') {
-                    operand1 = '';
-                    operand2 = '';
-                    operator = '';
-                    displayText = '0';
+                    reset();
                     currentState = getClearState();
                 }
 
@@ -69,10 +71,7 @@ var calculatorEngine = function () {
                     operator = input;
                     currentState = getOperatorPressedState();
                 } else if (input === 'C') {
-                    operand1 = '';
-                    operand2 = '';
-                    operator = '';
-                    displayText = '0';
+                    reset();
                     currentState = getClearState();
                 }
 
@@ -123,10 +122,7 @@ var calculatorEngine = function () {
                     displayText = result;
                     currentState = getCalculateState();
                 } else if (input === 'C') {
-                    operand1 = '';
-                    operand2 = '';
-                    operator = '';
-                    displayText = '0';
+                    reset();
                     currentState = getClearState();
                 }
 
@@ -139,23 +135,16 @@ var calculatorEngine = function () {
         return {
             processInput: function (input) {
                 if (input === 'C' || input === '0') {
-                    operand1 = '';
-                    operand2 = '';
-                    operator = '';
-                    result = 0;
-                    displayText = '0';
+                    reset();
                     currentState = getClearState();
                 } else if (input === '1' || input === '2' || input === '3' || input === '4' || input === '5' || input === '6' || input === '7' || input === '8' || input === '9') {
-                    operand1 = '';
-                    operand2 = '';
-                    operator = '';
-                    result = 0;
-                    displayText = '0';
+                    reset();
                     currentState = getDigitPressedState();
                 } else if (input === '+' || input === '-' || input === '*' || input === '/') {
                     operand1 = result;
+                    operand2 = '';
                     operator = input;
-                    currentState = getdigitsPressedWithPendingOperatorState();
+                    currentState = getDigitsPressedWithPendingOperatorState();
                 }
 
                 return displayText;
