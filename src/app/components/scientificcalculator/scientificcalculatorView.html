@@ -2,16 +2,21 @@
     button {
         width: 150px;
         height: 75px;
-        margin: 2px;        
+        margin: 2px;
     }
-
-    .sci-button{
-background-color: #4A89DC;
+    
+    .sci-button {
+        background-color: #4A89DC;
+    }
+    
+    .sci-button:hover {
+        background-color: #5D9CEC;
     }
 </style>
-<table class="col-xs-8">
+<table class="col-xs-12">
     <tr>
-        <td colspan="8"><input type="text" ng-model="$ctrl.displayText" style="width:100%; background-color:#FFF" disabled placeholder="0" class="text-right input-lg"></td>
+        <td colspan="8"><input type="text" ng-model="$ctrl.displayText" style="width:100%; background-color:#FFF" disabled placeholder="0"
+                class="text-right input-lg"></td>
     </tr>
     <tr>
         <td><button type="button" class="btn btn-primary sci-button" ng-click="$ctrl.buttonClick('sin');"><h4></h4></button></td>
@@ -49,8 +54,8 @@ background-color: #4A89DC;
         <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('6');"><h4>6</h4></button></td>
     </tr>
     <tr>
-        <td><button type="button" class="btn btn-primary sci-button" ng-click="$ctrl.buttonClick('xy');"><h4>xy</h4></button></td>
-        <td><button type="button" class="btn btn-primary sci-button" ng-click="$ctrl.buttonClick('root');"><h4>root</h4></button></td>
+        <td><button type="button" class="btn btn-primary sci-button" ng-click="$ctrl.buttonClick('xy');"><h4>x<sup>y</sup></h4></button></td>
+        <td><button type="button" class="btn btn-primary sci-button" ng-click="$ctrl.buttonClick('root');"><h4>&radic;</h4></button></td>
         <td><button type="button" class="btn btn-primary sci-button" ng-click="$ctrl.buttonClick('x!');"><h4>x!</h4></button></td>
         <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('7');"><h4>7</h4></button></td>
         <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('8');"><h4>8</h4></button></td>
@@ -60,10 +65,9 @@ background-color: #4A89DC;
     <tr>
         <td><button type="button" class="btn btn-primary sci-button" ng-click="$ctrl.buttonClick('log');"><h4>log</h4></button></td>
         <td><button type="button" class="btn btn-primary sci-button" ng-click="$ctrl.buttonClick('%');"><h4>%</h4></button></td>
-        <td><button type="button" class="btn btn-primary sci-button" ng-click="$ctrl.buttonClick('pi');"><h4>pi</h4></button></td>
+        <td><button type="button" class="btn btn-primary sci-button" ng-click="$ctrl.buttonClick('pi');"><h4>&#960;</h4></button></td>
         <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('0');"><h4>0</h4></button></td>
         <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('.');"><h4>.</h4></button></td>
         <td><button type="button" class="btn btn-primary" ng-click="$ctrl.buttonClick('+-');"><h4>+ -</h4></button></td>
     </tr>
 </table>
-<div class="col-xs-4"></div>
