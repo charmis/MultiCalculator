@@ -18,16 +18,18 @@ describe('Testing Calculator Service', function () {
 
 	it('1 + 10 should be equal to 11', function () {
 		calculatorService.start();
-		calculatorService.processInput('12');
+		calculatorService.processInput('1');
 		calculatorService.processInput('+');
-		calculatorService.processInput('10');
+		calculatorService.processInput('1');
+		calculatorService.processInput('0');
 		var result = calculatorService.processInput('=');
-		expect(result).toBe(22);
+		expect(result).toBe(11);
 	});
 
 	it('10 - 1 should be equal to 9', function () {
 		calculatorService.start();
-		calculatorService.processInput('10');
+		calculatorService.processInput('1');
+		calculatorService.processInput('0');
 		calculatorService.processInput('-');
 		calculatorService.processInput('1');
 		var result = calculatorService.processInput('=');
@@ -54,9 +56,12 @@ describe('Testing Calculator Service', function () {
 
 	it('100 / 50 should be equal to 2', function () {
 		calculatorService.start();
-		calculatorService.processInput('100');
+		calculatorService.processInput('1');
+		calculatorService.processInput('0');
+		calculatorService.processInput('0');
 		calculatorService.processInput('/');
-		calculatorService.processInput('50');
+		calculatorService.processInput('5');
+		calculatorService.processInput('0');
 		var result = calculatorService.processInput('=');
 		expect(result).toBe(2);
 	});
