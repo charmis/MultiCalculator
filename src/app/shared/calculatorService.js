@@ -100,7 +100,7 @@ var calculatorEngine = function () {
                     } else if (operator === '/') {
                         result = op1 / op2;
                     }
-                    operand1 = result;
+                    operand1 = result.toString();
                     displayText = operand1;
                     operator = input;
                     currentState = getOperatorPressedState();
@@ -119,7 +119,7 @@ var calculatorEngine = function () {
                         result = op1 / op2;
                     }
 
-                    displayText = result;
+                    displayText = result.toString();
                     currentState = getCalculateState();
                 } else if (input === 'C') {
                     reset();
