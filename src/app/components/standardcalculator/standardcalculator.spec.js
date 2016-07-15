@@ -7,13 +7,27 @@ describe('Testing Calculator Service', function () {
 		calculatorService = calculatorEngineService;
 	}));
 
+	it('Pressing keys 1 and then 2 should display 12', function () {
+		calculatorService.start();
+		calculatorService.processInput('1');
+		var result = calculatorService.processInput('2');
+		expect(result).toBe('12');
+	});
+
+	it('Pressing keys 0 and then 5 should display 5', function () {
+		calculatorService.start();
+		calculatorService.processInput('0');
+		var result = calculatorService.processInput('5');
+		expect(result).toBe('5');
+	});
+
 	it('1 + 1 should be equal to 2', function () {
 		calculatorService.start();
 		calculatorService.processInput('1');
 		calculatorService.processInput('+');
 		calculatorService.processInput('1');
 		var result = calculatorService.processInput('=');
-		expect(result).toBe(2);
+		expect(result).toBe('2');
 	});
 
 	it('1 + 10 should be equal to 11', function () {
@@ -23,7 +37,7 @@ describe('Testing Calculator Service', function () {
 		calculatorService.processInput('1');
 		calculatorService.processInput('0');
 		var result = calculatorService.processInput('=');
-		expect(result).toBe(11);
+		expect(result).toBe('11');
 	});
 
 	it('10 - 1 should be equal to 9', function () {
@@ -33,7 +47,7 @@ describe('Testing Calculator Service', function () {
 		calculatorService.processInput('-');
 		calculatorService.processInput('1');
 		var result = calculatorService.processInput('=');
-		expect(result).toBe(9);
+		expect(result).toBe('9');
 	});
 
 	it('2 * 2 should be equal to 4', function () {
@@ -42,7 +56,7 @@ describe('Testing Calculator Service', function () {
 		calculatorService.processInput('*');
 		calculatorService.processInput('2');
 		var result = calculatorService.processInput('=');
-		expect(result).toBe(4);
+		expect(result).toBe('4');
 	});
 
 	it('2 * 0 should be equal to 0', function () {
@@ -51,7 +65,7 @@ describe('Testing Calculator Service', function () {
 		calculatorService.processInput('*');
 		calculatorService.processInput('0');
 		var result = calculatorService.processInput('=');
-		expect(result).toBe(0);
+		expect(result).toBe('0');
 	});
 
 	it('100 / 50 should be equal to 2', function () {
@@ -63,7 +77,17 @@ describe('Testing Calculator Service', function () {
 		calculatorService.processInput('5');
 		calculatorService.processInput('0');
 		var result = calculatorService.processInput('=');
-		expect(result).toBe(2);
+		expect(result).toBe('2');
 	});
+
+	it('pressing "C" should clear the dislay and set value 0', function () {
+		calculatorService.start();
+		calculatorService.processInput('1');
+		calculatorService.processInput('0');
+		calculatorService.processInput('0');
+		var result = calculatorService.processInput('C');
+		expect(result).toBe('0');
+	});
+
 
 });
