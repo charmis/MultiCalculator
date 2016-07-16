@@ -14,6 +14,14 @@ describe('Testing Calculator Service', function () {
 		expect(result).toBe('12');
 	});
 
+	it('Pressing keys 1 and then + and then 5 should display 5', function () {
+		calculatorService.start();
+		calculatorService.processInput('1');
+		calculatorService.processInput('+');
+		var result = calculatorService.processInput('5');
+		expect(result).toBe('5');
+	});
+
 	it('Pressing keys 0 and then 5 should display 5', function () {
 		calculatorService.start();
 		calculatorService.processInput('0');
@@ -89,5 +97,14 @@ describe('Testing Calculator Service', function () {
 		expect(result).toBe('0');
 	});
 
-
+	it('1 + 2 + 3 should be 6', function () {
+		calculatorService.start();
+		calculatorService.processInput('1');
+		calculatorService.processInput('+');
+		calculatorService.processInput('2');
+		calculatorService.processInput('+');
+		calculatorService.processInput('3');
+		var result = calculatorService.processInput('=');
+		expect(result).toBe('6');
+	});
 });
