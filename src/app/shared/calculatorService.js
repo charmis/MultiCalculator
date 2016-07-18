@@ -50,6 +50,9 @@ var calculatorEngine = function () {
                     displayText = operand1;
                     currentState = getDigitPressedState();
                 }
+                else if (input === 'MC') {
+                    inMemoryValue = 0;
+                }
 
                 return displayText;
             }
@@ -71,6 +74,13 @@ var calculatorEngine = function () {
                 }
                 else if (input === 'M+') {
                     inMemoryValue = inMemoryValue + parseInt(displayText);
+                }
+                else if (input === 'MR') {
+                    operand1 = inMemoryValue;
+                    displayText = operand1;
+                }
+                else if (input === 'MC') {
+                    inMemoryValue = 0;
                 }
 
                 return displayText;
@@ -94,6 +104,14 @@ var calculatorEngine = function () {
                 }
                 else if (input === 'M+') {
                     inMemoryValue = inMemoryValue + parseInt(displayText);
+                }
+                else if (input === 'MR') {
+                    operand2 = inMemoryValue;
+                    displayText = inMemoryValue;
+                    currentState = getDigitsPressedWithPendingOperatorState();
+                }
+                else if (input === 'MC') {
+                    inMemoryValue = 0;
                 }
 
                 return displayText;
@@ -155,6 +173,9 @@ var calculatorEngine = function () {
                     displayText = operand2;
                     currentState = getDigitsPressedWithPendingOperatorState();
                 }
+                else if (input === 'MC') {
+                    inMemoryValue = 0;
+                }
 
                 return displayText;
             }
@@ -171,12 +192,18 @@ var calculatorEngine = function () {
                     reset();
                     currentState = getDigitPressedState();
                 } else if (input === '+' || input === '-' || input === '*' || input === '/') {
-                    operand1 = result;
+                    operand1 = displayText;
                     operand2 = '';
                     operator = input;
                     currentState = getDigitsPressedWithPendingOperatorState();
                 } else if (input === 'M+') {
                     inMemoryValue = inMemoryValue + parseInt(displayText);
+                }
+                else if (input === 'MR') {
+                    displayText = inMemoryValue;
+                }
+                else if (input === 'MC') {
+                    inMemoryValue = 0;
                 }
 
                 return displayText;
