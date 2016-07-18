@@ -9,6 +9,7 @@ var calculatorEngine = function () {
     var result = 0;
     var displayText = '0';
     var currentState;
+    var inMemoryValue = 0;
 
     var FLAG_ONE = 1;
     var FLAG_TWO = 2;
@@ -39,9 +40,13 @@ var calculatorEngine = function () {
     function getClearState() {
         return {
             processInput: function (input) {
-                //TODO: bitwise mask
                 if (input & mask) {
                     operand1 += input;
+                    displayText = operand1;
+                    currentState = getDigitPressedState();
+                }
+                else if (input === 'MR') {
+                    operand1 = inMemoryValue;
                     displayText = operand1;
                     currentState = getDigitPressedState();
                 }
@@ -64,6 +69,9 @@ var calculatorEngine = function () {
                     reset();
                     currentState = getClearState();
                 }
+                else if (input === 'M+') {
+                    inMemoryValue = inMemoryValue + parseInt(displayText);
+                }
 
                 return displayText;
             }
@@ -83,6 +91,9 @@ var calculatorEngine = function () {
                 } else if (input === 'C') {
                     reset();
                     currentState = getClearState();
+                }
+                else if (input === 'M+') {
+                    inMemoryValue = inMemoryValue + parseInt(displayText);
                 }
 
                 return displayText;
@@ -136,6 +147,14 @@ var calculatorEngine = function () {
                     reset();
                     currentState = getClearState();
                 }
+                else if (input === 'M+') {
+                    inMemoryValue = inMemoryValue + parseInt(displayText);
+                }
+                else if (input === 'MR') {
+                    operand2 = inMemoryValue;
+                    displayText = operand2;
+                    currentState = getDigitsPressedWithPendingOperatorState();
+                }
 
                 return displayText;
             }
@@ -156,6 +175,8 @@ var calculatorEngine = function () {
                     operand2 = '';
                     operator = input;
                     currentState = getDigitsPressedWithPendingOperatorState();
+                } else if (input === 'M+') {
+                    inMemoryValue = inMemoryValue + parseInt(displayText);
                 }
 
                 return displayText;
