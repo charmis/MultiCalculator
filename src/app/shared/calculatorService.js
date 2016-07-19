@@ -75,6 +75,9 @@ var calculatorEngine = function () {
                 else if (input === 'M+') {
                     inMemoryValue = inMemoryValue + parseInt(displayText);
                 }
+                else if (input === 'M-') {
+                    inMemoryValue = inMemoryValue - parseInt(displayText);
+                }
                 else if (input === 'MR') {
                     operand1 = inMemoryValue;
                     displayText = operand1;
@@ -104,6 +107,9 @@ var calculatorEngine = function () {
                 }
                 else if (input === 'M+') {
                     inMemoryValue = inMemoryValue + parseInt(displayText);
+                }
+                else if (input === 'M-') {
+                    inMemoryValue = inMemoryValue - parseInt(displayText);
                 }
                 else if (input === 'MR') {
                     operand2 = inMemoryValue;
@@ -168,6 +174,9 @@ var calculatorEngine = function () {
                 else if (input === 'M+') {
                     inMemoryValue = inMemoryValue + parseInt(displayText);
                 }
+                else if (input === 'M-') {
+                    inMemoryValue = inMemoryValue - parseInt(displayText);
+                }
                 else if (input === 'MR') {
                     operand2 = inMemoryValue;
                     displayText = operand2;
@@ -198,6 +207,9 @@ var calculatorEngine = function () {
                     currentState = getDigitsPressedWithPendingOperatorState();
                 } else if (input === 'M+') {
                     inMemoryValue = inMemoryValue + parseInt(displayText);
+                }
+                else if (input === 'M-') {
+                    inMemoryValue = inMemoryValue - parseInt(displayText);
                 }
                 else if (input === 'MR') {
                     displayText = inMemoryValue;
