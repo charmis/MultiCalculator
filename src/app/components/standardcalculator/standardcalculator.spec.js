@@ -107,4 +107,14 @@ describe('Testing Calculator Service', function () {
 		var result = calculatorService.processInput('=');
 		expect(result).toBe('6');
 	});
+
+	it('pressing "5", then "M+", then "C", then "MR" should dipslay 5', function () {
+		calculatorService.start();
+		calculatorService.processInput('5');
+		calculatorService.processInput('M+');
+		calculatorService.processInput('C');
+		var result = calculatorService.processInput('MR');
+		expect(result).toBe('5');
+	});
+
 });
