@@ -117,4 +117,18 @@ describe('Testing Calculator Service', function () {
 		expect(result).toBe('5');
 	});
 
+	it('pressing "5", then "M+", then "C", then "5 * 2 =", then "M+", then "MR" should dipslay 15', function () {
+		calculatorService.start();
+		calculatorService.processInput('5');
+		calculatorService.processInput('M+');
+		calculatorService.processInput('C');
+		calculatorService.processInput('5');
+		calculatorService.processInput('*');
+		calculatorService.processInput('2');
+		calculatorService.processInput('=');
+		calculatorService.processInput('M+');
+		var result = calculatorService.processInput('MR');
+		expect(result).toBe('15');
+	});
+
 });

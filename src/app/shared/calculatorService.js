@@ -46,7 +46,7 @@ var calculatorEngine = function () {
                     currentState = getDigitPressedState();
                 }
                 else if (input === 'MR') {
-                    operand1 = inMemoryValue;
+                    operand1 = inMemoryValue.toString();
                     displayText = operand1;
                     currentState = getDigitPressedState();
                 }
