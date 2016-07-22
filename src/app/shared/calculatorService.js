@@ -31,6 +31,7 @@ var calculatorEngine = function () {
     }
 
     function start() {
+        inMemoryValue = 0;
         reset();
         currentState = getClearState();
 
@@ -212,7 +213,7 @@ var calculatorEngine = function () {
                     inMemoryValue = inMemoryValue - parseInt(displayText);
                 }
                 else if (input === 'MR') {
-                    displayText = inMemoryValue;
+                    displayText = inMemoryValue.toString();
                 }
                 else if (input === 'MC') {
                     inMemoryValue = 0;
