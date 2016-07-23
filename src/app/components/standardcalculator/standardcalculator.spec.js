@@ -131,4 +131,14 @@ describe('Testing Calculator Service', function () {
 		expect(result).toBe('15');
 	});
 
+	it('pressing "5", then "M+", then "MC", then "MR" should dipslay 0', function () {
+		calculatorService.start();
+		calculatorService.processInput('5');
+		calculatorService.processInput('M+');
+		calculatorService.processInput('MC');
+		calculatorService.processInput('C');
+		var result = calculatorService.processInput('MR');
+		expect(result).toBe('0');
+	});
+
 });
