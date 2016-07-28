@@ -38,6 +38,23 @@ var calculatorEngine = function () {
         return displayText;
     }
 
+    function performOperation() {
+        var op1 = parseInt(operand1);
+        var op2 = parseInt(operand2);
+
+        if (operator === '+') {
+            result = op1 + op2;
+        } else if (operator === '-') {
+            result = op1 - op2;
+        } else if (operator === '*') {
+            result = op1 * op2;
+        } else if (operator === '/') {
+            result = op1 / op2;
+        }
+
+        return result.toString();
+    }
+
     function getClearState() {
         return {
             processInput: function (input) {
@@ -134,39 +151,13 @@ var calculatorEngine = function () {
                     displayText = operand2;
                     currentState = getDigitsPressedWithPendingOperatorState();
                 } else if (input === '+' || input === '-' || input === '*' || input === '/') {
-                    var op1 = parseInt(operand1);
-                    var op2 = parseInt(operand2);
-
-                    if (operator === '+') {
-                        result = op1 + op2;
-                    } else if (operator === '-') {
-                        result = op1 - op2;
-                    } else if (operator === '*') {
-                        result = op1 * op2;
-                    } else if (operator === '/') {
-                        result = op1 / op2;
-                    }
-                    operand1 = result.toString();
+                    operand1 = performOperation();
                     operand2 = '';
                     displayText = operand1;
                     operator = input;
                     currentState = getOperatorPressedState();
                 } else if (input === '=') {
-
-                    var op1 = parseInt(operand1);
-                    var op2 = parseInt(operand2);
-
-                    if (operator === '+') {
-                        result = op1 + op2;
-                    } else if (operator === '-') {
-                        result = op1 - op2;
-                    } else if (operator === '*') {
-                        result = op1 * op2;
-                    } else if (operator === '/') {
-                        result = op1 / op2;
-                    }
-
-                    displayText = result.toString();
+                    displayText = performOperation();
                     currentState = getCalculateState();
                 } else if (input === 'C') {
                     reset();
