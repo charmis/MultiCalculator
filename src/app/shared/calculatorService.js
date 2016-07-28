@@ -80,6 +80,7 @@ var calculatorEngine = function () {
                 currentState = getDigitPressedState();
             }
             else if (input === '.') {
+                operand1 = "0.";
                 currentState = getDecimalPressedState();
             }
             else if (input === 'MR') {
@@ -226,7 +227,23 @@ var calculatorEngine = function () {
                 operator = input;
                 currentState = getOperatorPressedOnDecimalState();
             }
-
+            else if (input === 'C') {
+                reset();
+                currentState = getClearState();
+            }
+            else if (input === 'M+') {
+                inMemoryValue = inMemoryValue + parseFloat(displayText);
+            }
+            else if (input === 'M-') {
+                inMemoryValue = inMemoryValue - parseFloat(displayText);
+            }
+            else if (input === 'MR') {
+                operand2 = inMemoryValue;
+                displayText = operand2;
+            }
+            else if (input === 'MC') {
+                inMemoryValue = 0;
+            }
             return displayText;
         }
 
@@ -241,9 +258,11 @@ var calculatorEngine = function () {
                 operand2 = input;
                 displayText = operand2;
                 currentState = getDigitsPressedWithPendingOperatorOnDecimalState();
-            } else if (input === '+' || input === '-' || input === '*' || input === '/') {
+            }
+            else if (input === '+' || input === '-' || input === '*' || input === '/') {
                 operator = input;
-            } else if (input === 'C') {
+            }
+            else if (input === 'C') {
                 reset();
                 currentState = getClearState();
             }
