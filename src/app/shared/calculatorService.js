@@ -55,13 +55,33 @@ var calculatorEngine = function () {
         return result.toString();
     }
 
+    function performDecimalOperation() {
+        var op1 = parseFloat(operand1);
+        var op2 = parseFloat(operand2);
+
+        if (operator === '+') {
+            result = op1 + op2;
+        } else if (operator === '-') {
+            result = op1 - op2;
+        } else if (operator === '*') {
+            result = op1 * op2;
+        } else if (operator === '/') {
+            result = op1 / op2;
+        }
+
+        return result.toString();
+    }
+
     function getClearState() {
         return {
             processInput: function (input) {
                 if (input & mask) {
-                    operand1 += input;
+                    operand1 = input;
                     displayText = operand1;
                     currentState = getDigitPressedState();
+                }
+                else if (input === '.') {
+                    currentState = getDecimalPressedState();
                 }
                 else if (input === 'MR') {
                     operand1 = inMemoryValue.toString();
@@ -83,10 +103,16 @@ var calculatorEngine = function () {
                 if (input === '0' || (input & mask)) {
                     operand1 += input;
                     displayText = operand1;
-                } else if (input === '+' || input === '-' || input === '*' || input === '/') {
+                }
+                else if (input === '+' || input === '-' || input === '*' || input === '/') {
                     operator = input;
                     currentState = getOperatorPressedState();
-                } else if (input === 'C') {
+                }
+                else if (input === '.') {
+                    operand1 += input;
+                    currentState = getDecimalPressedState();
+                }
+                else if (input === 'C') {
                     reset();
                     currentState = getClearState();
                 }
@@ -149,7 +175,6 @@ var calculatorEngine = function () {
                 if (input === '0' || (input & mask)) {
                     operand2 += input;
                     displayText = operand2;
-                    currentState = getDigitsPressedWithPendingOperatorState();
                 } else if (input === '+' || input === '-' || input === '*' || input === '/') {
                     operand1 = performOperation();
                     operand2 = '';
@@ -172,7 +197,6 @@ var calculatorEngine = function () {
                 else if (input === 'MR') {
                     operand2 = inMemoryValue;
                     displayText = operand2;
-                    currentState = getDigitsPressedWithPendingOperatorState();
                 }
                 else if (input === 'MC') {
                     inMemoryValue = 0;
@@ -183,21 +207,121 @@ var calculatorEngine = function () {
         }
     }
 
+    function getDecimalPressedState() {
+        function processInput(input) {
+            if (input === '0' || (input & mask)) {
+                operand1 += input;
+                displayText = operand1;
+            }
+            else if (input === '+' || input === '-' || input === '*' || input === '/') {
+                operator = input;
+                currentState = getOperatorPressedOnDecimalState();
+            }
+
+            return displayText;
+        }
+
+        return {
+            processInput: processInput
+        };
+    }
+
+    function getOperatorPressedOnDecimalState() {
+        function processInput(input) {
+            if (input === '0' || (input & mask)) {
+                operand2 = input;
+                displayText = operand2;
+                currentState = getDigitsPressedWithPendingOperatorOnDecimalState();
+            } else if (input === '+' || input === '-' || input === '*' || input === '/') {
+                operator = input;
+            } else if (input === 'C') {
+                reset();
+                currentState = getClearState();
+            }
+            else if (input === 'M+') {
+                inMemoryValue = inMemoryValue + parseFloat(displayText);
+            }
+            else if (input === 'M-') {
+                inMemoryValue = inMemoryValue - parseFloat(displayText);
+            }
+            else if (input === 'MR') {
+                operand2 = inMemoryValue;
+                displayText = inMemoryValue;
+                currentState = getDigitsPressedWithPendingOperatorOnDecimalState();
+            }
+            else if (input === 'MC') {
+                inMemoryValue = 0;
+            }
+
+            return displayText;
+        }
+
+        return {
+            processInput: processInput
+        };
+    }
+
+    function getDigitsPressedWithPendingOperatorOnDecimalState() {
+        function processInput(input) {
+            if (input === '0' || (input & mask)) {
+                operand2 += input;
+                displayText = operand2;
+            }
+            else if (input === '+' || input === '-' || input === '*' || input === '/') {
+                operand1 = performDecimalOperation();
+                operand2 = '';
+                displayText = operand1;
+                operator = input;
+                currentState = getOperatorPressedOnDecimalState();
+            }
+            else if (input === '=') {
+                displayText = performDecimalOperation();
+                currentState = getCalculateState();
+            }
+            else if (input === 'C') {
+                reset();
+                currentState = getClearState();
+            }
+            else if (input === 'M+') {
+                inMemoryValue = inMemoryValue + parseFloat(displayText);
+            }
+            else if (input === 'M-') {
+                inMemoryValue = inMemoryValue - parseFloat(displayText);
+            }
+            else if (input === 'MR') {
+                operand2 = inMemoryValue;
+                displayText = operand2;
+            }
+            else if (input === 'MC') {
+                inMemoryValue = 0;
+            }
+
+            return displayText;
+        }
+
+        return {
+            processInput: processInput
+        };
+    }
+
     function getCalculateState() {
         return {
             processInput: function (input) {
                 if (input === 'C' || input === '0') {
                     reset();
                     currentState = getClearState();
-                } else if (input & mask) {
+                }
+                else if (input & mask) {
                     reset();
                     currentState = getDigitPressedState();
-                } else if (input === '+' || input === '-' || input === '*' || input === '/') {
+                }
+                else if (input === '+' || input === '-' || input === '*' || input === '/') {
                     operand1 = displayText;
                     operand2 = '';
                     operator = input;
                     currentState = getDigitsPressedWithPendingOperatorState();
-                } else if (input === 'M+') {
+                }
+                else if (input === 'M+') {
                     inMemoryValue = inMemoryValue + parseInt(displayText);
                 }
                 else if (input === 'M-') {
