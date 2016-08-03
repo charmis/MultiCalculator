@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute', 'mainModule', 'scientificCalculator', 'standardCalculator'])
+angular.module('app', ['ngRoute', 'mainModule', 'scientificCalculatorModule', 'standardCalculatorModule'])
     .config(function ($routeProvider) {
         $routeProvider.when('/', {
             template: '<standardcalculator>Standard</standardcalculator>'

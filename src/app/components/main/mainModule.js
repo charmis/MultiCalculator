@@ -1,7 +1,6 @@
-angular.module("mainModule", ['headerModule', 'footerModule', 'leftNavigation'])
+angular.module("mainModule", ['headerModule', 'footerModule', 'leftNavigationModule'])
     .component("main", {
         templateUrl: "/app/components/main/main.html",
         controller: function () {
-            console.info("inside controller");
         }
     });
