@@ -116,6 +116,10 @@ var calculatorEngine = function () {
                 operand1 += input;
                 currentState = getDecimalPressedState();
             }
+            else if (input === 'CE') {
+                operand1 = '';
+                displayText = operand1;
+            }
             else if (input === 'C') {
                 reset();
                 currentState = getClearState();
@@ -183,16 +187,23 @@ var calculatorEngine = function () {
             if (input === '0' || (input & mask)) {
                 operand2 += input;
                 displayText = operand2;
-            } else if (input === '+' || input === '-' || input === '*' || input === '/') {
+            }
+            else if (input === '+' || input === '-' || input === '*' || input === '/') {
                 operand1 = performOperation();
                 operand2 = '';
                 displayText = operand1;
                 operator = input;
                 currentState = getOperatorPressedState();
-            } else if (input === '=') {
+            }
+            else if (input === '=') {
                 displayText = performOperation();
                 currentState = getCalculateState();
-            } else if (input === 'C') {
+            }
+            else if (input === 'CE') {
+                operand2 = '';
+                displayText = operand2;
+            }
+            else if (input === 'C') {
                 reset();
                 currentState = getClearState();
             }
@@ -213,7 +224,8 @@ var calculatorEngine = function () {
             return displayText;
         }
 
-        return {
+        return
+        {
             processInput: processInput
         };
     }
@@ -228,6 +240,10 @@ var calculatorEngine = function () {
                 operator = input;
                 currentState = getOperatorPressedOnDecimalState();
             }
+            else if (input === 'CE') {
+                operand1 = '';
+                displayText = operand1;
+            }
             else if (input === 'C') {
                 reset();
                 currentState = getClearState();
@@ -239,8 +255,8 @@ var calculatorEngine = function () {
                 inMemoryValue = inMemoryValue - parseFloat(displayText);
             }
             else if (input === 'MR') {
-                operand2 = inMemoryValue;
-                displayText = operand2;
+                operand1 = inMemoryValue;
+                displayText = operand1;
             }
             else if (input === 'MC') {
                 inMemoryValue = 0;
@@ -266,6 +282,10 @@ var calculatorEngine = function () {
             }
             else if (input === '+' || input === '-' || input === '*' || input === '/') {
                 operator = input;
+            }
+            else if (input === 'CE') {
+                operand2 = '';
+                displayText = operand2;
             }
             else if (input === 'C') {
                 reset();
@@ -310,6 +330,10 @@ var calculatorEngine = function () {
             else if (input === '=') {
                 displayText = performDecimalOperation();
                 currentState = getCalculateState();
+            }
+            else if (input === 'CE') {
+                operand2 = '';
+                displayText = operand2;
             }
             else if (input === 'C') {
                 reset();
