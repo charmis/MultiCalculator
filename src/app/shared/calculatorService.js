@@ -224,8 +224,7 @@ var calculatorEngine = function () {
             return displayText;
         }
 
-        return
-        {
+        return {
             processInput: processInput
         };
     }
