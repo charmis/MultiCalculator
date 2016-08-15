@@ -148,11 +148,17 @@ var calculatorEngine = function () {
 
     function getOperatorPressedState() {
         function processInput(input) {
-            if (input === '0' || (input & mask)) {
-                operand2 += input;
+            if (input & mask) {
+                operand2 = input;
                 displayText = operand2;
                 currentState = getDigitsPressedWithPendingOperatorState();
-            } else if (input === '+' || input === '-' || input === '*' || input === '/') {
+            } 
+            else if (input === '.') {
+                operand2 = "0.";
+                displayText = operand2;
+                currentState = getDigitsPressedWithPendingOperatorOnDecimalState();
+            }
+            else if (input === '+' || input === '-' || input === '*' || input === '/') {
                 operator = input;
                 currentState = getOperatorPressedState();
             } else if (input === 'C') {
@@ -374,7 +380,7 @@ var calculatorEngine = function () {
                 operand1 = displayText;
                 operand2 = '';
                 operator = input;
-                currentState = getDigitsPressedWithPendingOperatorState();
+                currentState = getOperatorPressedState();
             }
             else if (input === 'M+') {
                 inMemoryValue = inMemoryValue + parseInt(displayText);
