@@ -59,6 +59,8 @@ var calculatorEngine = function () {
         var op1 = parseFloat(operand1);
         var op2 = parseFloat(operand2);
 
+        var decimalPrecision = (operand1.indexOf(".") > operand2.indexOf(".")) ? operand1.indexOf(".") : operand2.indexOf(".");
+
         if (operator === '+') {
             result = op1 + op2;
         } else if (operator === '-') {
@@ -69,7 +71,7 @@ var calculatorEngine = function () {
             result = op1 / op2;
         }
 
-        return result.toString();
+        return result.toFixed(decimalPrecision);
     }
 
     function getClearState() {
@@ -152,7 +154,7 @@ var calculatorEngine = function () {
                 operand2 = input;
                 displayText = operand2;
                 currentState = getDigitsPressedWithPendingOperatorState();
-            } 
+            }
             else if (input === '.') {
                 operand2 = "0.";
                 displayText = operand2;
