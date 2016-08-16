@@ -65,7 +65,7 @@ describe('Testing Calculator Service', function () {
 		calculatorService.processInput('2');
 		var result = calculatorService.processInput('=');
 		expect(result).toBe('4');
-	});
+	});	
 
 	it('2 * 0 should be equal to 0', function () {
 		calculatorService.start();
@@ -152,5 +152,28 @@ describe('Testing Calculator Service', function () {
 		calculatorService.processInput('C');
 		var result = calculatorService.processInput('MR');
 		expect(result).toBe('5');
+	});
+
+	it('5+.9=*2 should be equal to 11.8', function () {
+		calculatorService.start();
+		calculatorService.processInput('5');
+		calculatorService.processInput('+');
+		calculatorService.processInput('.');
+		calculatorService.processInput('9');
+		calculatorService.processInput('=');
+		calculatorService.processInput('*');
+		var result = calculatorService.processInput('2');
+		expect(result).toBe('11.8');
+	});
+
+	it('5+.9*2 should be equal to 11.8', function () {
+		calculatorService.start();
+		calculatorService.processInput('5');
+		calculatorService.processInput('+');
+		calculatorService.processInput('.');
+		calculatorService.processInput('9');
+		calculatorService.processInput('*');
+		var result = calculatorService.processInput('2');
+		expect(result).toBe('11.8');
 	});
 });
