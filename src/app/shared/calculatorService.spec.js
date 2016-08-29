@@ -162,7 +162,8 @@ describe('Testing Calculator Service', function () {
 		calculatorService.processInput('9');
 		calculatorService.processInput('=');
 		calculatorService.processInput('*');
-		var result = calculatorService.processInput('2');
+		calculatorService.processInput('2');
+		var result = calculatorService.processInput('=');
 		expect(result).toBe('11.8');
 	});
 
@@ -173,7 +174,8 @@ describe('Testing Calculator Service', function () {
 		calculatorService.processInput('.');
 		calculatorService.processInput('9');
 		calculatorService.processInput('*');
-		var result = calculatorService.processInput('2');
+		calculatorService.processInput('2');
+		var result = calculatorService.processInput('=');
 		expect(result).toBe('11.8');
 	});
 });

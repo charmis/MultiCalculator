@@ -38,6 +38,10 @@ var calculatorEngine = function () {
         return displayText;
     }
 
+    function isInt(n) {
+        return n % 1 === 0;
+    }
+
     function performOperation() {
         var op1 = parseInt(operand1);
         var op2 = parseInt(operand2);
@@ -376,13 +380,20 @@ var calculatorEngine = function () {
             }
             else if (input & mask) {
                 reset();
+                operand1 = input;
+                displayText = operand1;
                 currentState = getDigitPressedState();
             }
             else if (input === '+' || input === '-' || input === '*' || input === '/') {
                 operand1 = displayText;
                 operand2 = '';
                 operator = input;
-                currentState = getOperatorPressedState();
+                if (isInt(operand1)) {
+                    currentState = getOperatorPressedState();
+                }
+                else {
+                    currentState = getOperatorPressedOnDecimalState();
+                }
             }
             else if (input === 'M+') {
                 inMemoryValue = inMemoryValue + parseInt(displayText);
