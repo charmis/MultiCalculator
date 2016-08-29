@@ -150,7 +150,7 @@ var calculatorEngine = function () {
 
     function getOperatorPressedState() {
         function processInput(input) {
-            if (input & mask) {
+            if (input === '0' || (input & mask)) {
                 operand2 = input;
                 displayText = operand2;
                 currentState = getDigitsPressedWithPendingOperatorState();
